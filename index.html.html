@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T.K. Dubey Industrial Engineering - Professional Engineering Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #00468b;
+            --accent: #ff6b35;
+            --accent-dark: #e55525;
+            --dark: #0a192f;
+            --light: #f5f7fa;
+            --medium: #e9ecef;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --timeline-color: #0056b3;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Animation classes */
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--dark);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            margin-right: 10px;
+        }
+        
+        .nav-logo-outer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-logo-inner {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-logo-text {
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+        }
+        
+        /* Branding Elements */
+        .brand-shape {
+            position: absolute;
+            border-radius: 50%;
+            background-color: var(--primary);
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        .shape1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: -150px;
+        }
+        
+        .shape2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        .brand-accent {
+            position: relative;
+        }
+        
+        .brand-accent::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .section-divider {
+            width: 100%;
+            height: 5px;
+            margin-bottom: 50px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0.2;
+            border-radius: 5px;
+        }
+        
+        .logo-small {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            position: relative;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        .logo-small-outer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        
+        .logo-small-inner {
+            position: absolute;
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+            border-radius: 50%;
+            background: var(--dark);
+        }
+        
+        .logo-small-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .branded-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .branded-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .branded-card:hover::before {
+            background-color: var(--accent);
+            width: 6px;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .nav-logo-text {
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li { margin-left: 30px; }
+        
+        .nav-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover { color: white; }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after { width: 100%; }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 20px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Styles */
+        .hero {
+            background: var(--dark);
+            color: white;
+            padding: 160px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Pipeline Background Elements */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, transparent 50%, rgba(0, 86, 179, 0.1) 50%),
+                linear-gradient(transparent 50%, rgba(0, 86, 179, 0.05) 50%);
+            background-size: 40px 40px;
+            opacity: 0.2;
+        }
+        
+        .pipeline-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .pipeline {
+            position: absolute;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 10px;
+            z-index: 1;
+            opacity: 0.2;
+            animation: flow 15s linear infinite;
+        }
+        
+        .pipeline:nth-child(1) {
+            top: 20%;
+            left: -5%;
+            width: 35%;
+            transform: rotate(-5deg);
+        }
+        
+        .pipeline:nth-child(2) {
+            top: 45%;
+            right: -5%;
+            width: 40%;
+            transform: rotate(3deg);
+        }
+        
+        .pipeline:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            width: 50%;
+            transform: rotate(-2deg);
+        }
+        
+        .pipeline:nth-child(4) {
+            bottom: 15%;
+            right: 10%;
+            width: 35%;
+            transform: rotate(5deg);
+        }
+        
+        .pipeline-joint {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--primary);
+            opacity: 0.3;
+            z-index: 2;
+        }
+        
+        .pipeline-joint:nth-child(5) {
+            top: 19%;
+            left: 30%;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        .pipeline-joint:nth-child(6) {
+            top: 44%;
+            right: 35%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        .pipeline-joint:nth-child(7) {
+            bottom: 29%;
+            left: 70%;
+            animation: pulse 5s ease-in-out infinite;
+        }
+        
+        .pipeline-joint:nth-child(8) {
+            bottom: 14%;
+            right: 10%;
+            animation: pulse 6s ease-in-out infinite;
+        }
+        
+        .pipeline-glow {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 86, 179, 0.4) 0%, rgba(0, 86, 179, 0) 70%);
+            z-index: 0;
+            opacity: 0.5;
+        }
+        
+        .pipeline-glow:nth-child(9) {
+            top: 10%;
+            left: 20%;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .pipeline-glow:nth-child(10) {
+            bottom: 10%;
+            right: 20%;
+            animation: float 10s ease-in-out infinite;
+        }
+        
+        @keyframes flow {
+            0% {
+                background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+                opacity: 0.1;
+            }
+            50% {
+                background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+                opacity: 0.2;
+            }
+            100% {
+                background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+                opacity: 0.1;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        
+        .logo {
+            width: 140px;
+            height: 140px;
+            position: relative;
+            margin: 0 auto 40px;
+            z-index: 5;
+        }
+        
+        .logo-outer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 10px 25px rgba(0, 86, 179, 0.3);
+        }
+        
+        .logo-inner {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            border-radius: 50%;
+            background: var(--dark);
+        }
+        
+        .logo-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            z-index: 2;
+            letter-spacing: 1px;
+        }
+        
+        .logo-pipe {
+            position: absolute;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 3px;
+            bottom: 35%;
+            left: 25%;
+            width: 50%;
+        }
+        
+        /* Gear effect around the logo */
+        .logo-gear {
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            top: -5%;
+            left: -5%;
+            border-radius: 50%;
+            border: 3px dashed var(--accent);
+            animation: rotate 30s linear infinite;
+        }
+        
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .hero-cta:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Stats Section */
+        .stats-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .stat-item p {
+            font-size: 16px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Section Styles */
+        section { padding: 80px 0; }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Services Styles */
+        .services { background-color: var(--medium); }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary);
+            color: white;
+            font-size: 36px;
+            transition: all 0.5s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .service-card:hover .service-icon {
+            background-color: var(--accent);
+            transform: scale(1.05);
+        }
+        
+        .service-card:hover .service-icon i { transform: rotateY(360deg); }
+        
+        .service-icon i { transition: transform 0.8s ease; }
+        
+        .service-content { padding: 25px; }
+        
+        .service-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .service-list { list-style: none; }
+        
+        .service-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+        
+        .service-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        /* Projects/Timeline Section */
+        .projects-timeline { background-color: white; }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--timeline-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 4px;
+        }
+        
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.4s ease;
+            animation: fadeIn 0.6s forwards;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border: 4px solid var(--accent);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover::after {
+            background-color: var(--accent);
+            transform: scale(1.2);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.8);
+        }
+        
+        .left {
+            left: 0;
+            animation: slideInLeft 0.8s forwards;
+        }
+        
+        .right {
+            left: 50%;
+            animation: slideInRight 0.8s forwards;
+        }
+        
+        .left::after { right: -10px; }
+        .right::after { left: -10px; }
+        
+        .timeline-content {
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            position: relative;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+            opacity: 0.8;
+            z-index: -1;
+        }
+        
+        .timeline-content:hover {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            border-left: 5px solid var(--accent);
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: white;
+            background: var(--accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(255, 107, 53, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timeline-location {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .timeline-state {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .timeline-project {
+            margin-top: 15px;
+            font-size: 15px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .timeline-project i {
+            position: absolute;
+            left: 0;
+            top: 3px;
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+        
+        /* Contact Section */
+        .contact { background-color: var(--medium); }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-info {
+            padding: 40px;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .contact-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        
+        .contact-text { font-size: 16px; }
+        
+        .contact-form { padding: 40px; }
+        
+        .form-group { margin-bottom: 20px; }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-about h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-nav h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+        
+        .footer-links { list-style: none; }
+        
+        .footer-links li { margin-bottom: 12px; }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 100;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive Styles */
+        @media screen and (max-width: 992px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-container { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item::after { left: 15px; }
+            .right { left: 0; }
+            .hero h1 { font-size: 36px; }
+            .section-title { font-size: 30px; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 30px; }
+            .section-title { font-size: 24px; }
+            .logo { width: 100px; height: 100px; }
+            .logo-text { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="nav-logo">
+                    <div class="nav-logo-icon">
+                        <div class="nav-logo-outer"></div>
+                        <div class="nav-logo-inner"></div>
+                        <span class="nav-logo-text">TK</span>
+                    </div>
+                    <div class="nav-logo-text">T.K. Dubey</div>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="pipeline-elements">
+                <div class="pipeline"></div>
+                <div class="pipeline"></div>
+                <div class="pipeline"></div>
+                <div class="pipeline"></div>
+                <div class="pipeline-joint"></div>
+                <div class="pipeline-joint"></div>
+                <div class="pipeline-joint"></div>
+                <div class="pipeline-joint"></div>
+                <div class="pipeline-glow"></div>
+                <div class="pipeline-glow"></div>
+            </div>
+            <div class="logo">
+                <div class="logo-gear"></div>
+                <div class="logo-outer"></div>
+                <div class="logo-inner"></div>
+                <div class="logo-text">TKD</div>
+                <div class="logo-pipe"></div>
+            </div>
+            <h1>T.K. DUBEY INDUSTRIAL ENGINEERING</h1>
+            <p>Delivering excellence in industrial and process engineering across India for over four decades</p>
+            <a href="#contact" class="hero-cta">Get In Touch</a>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <div class="container">
+        <div class="stats-container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>40+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>200+</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24</h3>
+                    <p>Locations Served</p>
+                </div>
+                <div class="stat-item">
+                    <h3>12</h3>
+                    <p>Industries Served</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Expertise</h2>
+                <p class="section-subtitle">Comprehensive engineering and consulting services to meet the diverse needs of industrial projects</p>
+            </div>
+            
+            <div class="section-divider"></div>
+            
+            <div class="services-grid">
+                <div class="service-card branded-card">
+                    <div class="service-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title brand-accent">Piping & Pipeline Engineering</h3>
+                        <ul class="service-list">
+                            <li>Industrial Process Piping Design</li>
+                            <li>Utility Piping Layout & Optimization</li>
+                            <li>Ash Disposal & Wastewater Systems</li>
+                            <li>Gas & Oil Pipeline Execution</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card branded-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title brand-accent">Equipment Installation</h3>
+                        <ul class="service-list">
+                            <li>Rotary & Static Equipment Erection</li>
+                            <li>Industrial Shutdown Planning</li>
+                            <li>Maintenance Programming</li>
+                            <li>Structural Fabrication & Erection</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card branded-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title brand-accent">Power Plant Engineering</h3>
+                        <ul class="service-list">
+                            <li>Thermal Power Plant Setup</li>
+                            <li>Process Optimization</li>
+                            <li>Efficiency Improvements</li>
+                            <li>Turnkey Project Consultation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card branded-card">
+                    <div class="service-icon">
+                        <i class="fas fa-oil-can"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title brand-accent">Refinery & Petrochemicals</h3>
+                        <ul class="service-list">
+                            <li>Refinery Process Piping</li>
+                            <li>Shutdown Support & Maintenance</li>
+                            <li>LNG & Oil Distribution Systems</li>
+                            <li>Corrosion Prevention Solutions</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card branded-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title brand-accent">Infrastructure Development</h3>
+                        <ul class="service-list">
+                            <li>Industrial Road & Drainage Planning</li>
+                            <li>Sewerage & Water Treatment</li>
+                            <li>Electrification Systems</li>
+                            <li>Industrial Automation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card branded-card">
+                    <div class="service-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title brand-accent">Project Management</h3>
+                        <ul class="service-list">
+                            <li>End-to-End Project Execution</li>
+                            <li>Resource Planning & Allocation</li>
+                            <li>Quality Control & Assurance</li>
+                            <li>Timeline & Budget Management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="projects-timeline" id="projects">
+        <div class="container">
+            <div class="brand-shape shape1"></div>
+            <div class="brand-shape shape2"></div>
+            
+            <div class="section-header">
+                <h2 class="section-title">Professional Timeline</h2>
+                <p class="section-subtitle">Four decades of comprehensive engineering excellence across 24 locations in India (1984-Present)</p>
+            </div>
+            
+            <div class="section-divider"></div>
+            
+            <div class="timeline">
+                <!-- Timeline items -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-date">1984-1986</span>
+                        <h3 class="timeline-location brand-accent">Anpara</h3>
+                        <span class="timeline-state">Uttar Pradesh</span>
+                        <div class="timeline-project">
+                            <i class="fas fa-atom"></i>
+                            Atomic Power Plant Project - Specialized in Utility Piping systems for critical power infrastructure.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="timeline-date">1986-1989</span>
+                        <h3 class="timeline-location brand-accent">Ramagundam</h3>
+                        <span class="timeline-state">Andhra Pradesh</span>
+                        <div class="timeline-project">
+                            <i class="fas fa-bolt"></i>
+                            Super Thermal Power Project - Led Utility Piping installations for this major power generation facility.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-date">1989-1991</span>
+                        <h3 class="timeline-location brand-accent">Chandrapur</h3>
+                        <span class="timeline-state">Maharashtra</span>
+                        <div class="timeline-project">
+                            <i class="fas fa-bolt"></i>
+                            Super Thermal Power Project - Managed Ash Disposal Piping systems implementation.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="timeline-date">1991-1994</span>
+                        <h3 class="timeline-location brand-accent">Babrala</h3>
+                        <span class="timeline-state">Uttar Pradesh</span>
+                        <div class="timeline-project">
+                            <i class="fas fa-flask"></i>
+                            Tata Fertilizer - Executed Compressor Piping, Process & Utility Piping for chemical facility.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2015-2018</span>
+                        <h3 class="timeline-location brand-accent">Cochin</h3>
+                        <span class="timeline-state">Kerala</span>
+                        <div class="timeline-project">
+                            <i class="fas fa-industry"></i>
+                            BPCL Refinery - Led process and utility piping projects, including structural components.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2018-2022</span>
+                        <h3 class="timeline-location brand-accent">Mumbai</h3>
+                        <span class="timeline-state">Maharashtra</span>
+                        <div class="timeline-project">
+                            <i class="fas fa-oil-can"></i>
+                            HPCL - Managed complex process and utility piping systems for petroleum operations.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2022-Present</span>
+                        <h3 class="timeline-location brand-accent">Multiple Locations</h3>
+                        <span class="timeline-state">Pan-India</span>
+                        <div class="timeline-project">
+                            <i class="fas fa-industry"></i>
+                            Various Industrial Projects - Leading process engineering and infrastructure development.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Reach out to us for your industrial engineering and consultation needs</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 class="contact-title">Contact Information</h3>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            Corporate Office: Mumbai, Maharashtra
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            +91 9575477774
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            tkdubey1963@gmail.com
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            Monday - Friday: 9:00 AM - 6:00 PM
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service of Interest</label>
+                            <select class="form-control" id="service">
+                                <option value="" selected disabled>Select a service</option>
+                                <option value="piping">Piping & Pipeline Engineering</option>
+                                <option value="equipment">Equipment Installation</option>
+                                <option value="power">Power Plant Engineering</option>
+                                <option value="refinery">Refinery & Petrochemicals</option>
+                                <option value="infrastructure">Infrastructure Development</option>
+                                <option value="project">Project Management</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Project Details</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Tell us about your project requirements"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3 class="brand-accent">About T.K. Dubey</h3>
+                    <p>With over four decades of excellence in industrial engineering, T.K. Dubey Industrial Engineering has established itself as a trusted name in the field, delivering quality solutions across India.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3 class="brand-accent">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3 class="brand-accent">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Piping Engineering</a></li>
+                        <li><a href="#">Equipment Installation</a></li>
+                        <li><a href="#">Power Plant Engineering</a></li>
+                        <li><a href="#">Refinery Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3 class="brand-accent">Industries</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Power Generation</a></li>
+                        <li><a href="#">Oil & Gas</a></li>
+                        <li><a href="#">Petrochemicals</a></li>
+                        <li><a href="#">Infrastructure</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 | <span class="logo-small"><span class="logo-small-outer"><span class="logo-small-inner"><span class="logo-small-text">T</span></span></span></span> T.K. Dubey Industrial Engineering | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            const backToTopBtn = document.querySelector('.back-to-top');
+            const contactForm = document.querySelector('.contact-form form');
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            // Mobile menu toggle
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+            }
+            
+            // Helper: Check if element is in viewport
+            function isInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= window.innerHeight &&
+                    rect.right <= window.innerWidth
+                );
+            }
+            
+            // Function: Handle scroll effects
+            function handleScroll() {
+                // Back to top button
+                if (window.pageYOffset > 300) {
+                    backToTopBtn?.classList.add('active');
+                } else {
+                    backToTopBtn?.classList.remove('active');
+                }
+                
+                // Timeline animations
+                timelineItems.forEach(item => {
+                    if (isInViewport(item)) {
+                        item.style.animationDelay = '0.2s';
+                        item.style.animationDuration = '0.8s';
+                    }
+                });
+            }
+            
+            // Back to top button click
+            if (backToTopBtn) {
+                backToTopBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                });
+            }
+            
+            // Form submission
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Thank you for your message! We will get back to you shortly.');
+                    contactForm.reset();
+                });
+            }
+            
+            // Initialize and add event listeners
+            handleScroll();
+            window.addEventListener('scroll', handleScroll);
+        });
+    </script>    </div>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Piping Engineering</a></li>
+                        <li><a href="#">Equipment Installation</a></li>
+                        <li><a href="#">Power Plant Engineering</a></li>
+                        <li><a href="#">Refinery Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3>Industries</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Power Generation</a></li>
+                        <li><a href="#">Oil & Gas</a></li>
+                        <li><a href="#">Petrochemicals</a></li>
+                        <li><a href="#">Infrastructure</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 | T.K. Dubey Industrial Engineering | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Timeline animation
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+            
+            function checkVisibility() {
+                timelineItems.forEach(item => {
+                    if (isInViewport(item)) {
+                        item.style.animationDelay = '0.2s';
+                        item.style.animationDuration = '0.8s';
+                    }
+                });
+            }
+            
+            // Back to top button
+            const backToTopBtn = document.querySelector('.back-to-top');
+            
+            function toggleBackToTopBtn() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('active');
+                } else {
+                    backToTopBtn.classList.remove('active');
+                }
+            }
+            
+            // Initial checks
+            checkVisibility();
+            toggleBackToTopBtn();
+            
+            // Event listeners
+            window.addEventListener('scroll', function() {
+                checkVisibility();
+                toggleBackToTopBtn();
+            });
+            
+            if (backToTopBtn) {
+                backToTopBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // Form validation
+            const contactForm = document.querySelector('.contact-form form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Form validation would go here
+                    alert('Thank you for your message! We will get back to you shortly.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
